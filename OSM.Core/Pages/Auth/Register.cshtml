@@ -1,0 +1,49 @@
+﻿@page "/register"
+@model OSM.Core.Pages.Auth.RegisterModel
+@{
+	Layout = "_AuthLayout";
+	ViewData["Title"] = "Register";
+}
+<section class="container py-5 my-5">
+	<a href="/" class="text-secondary">
+		← back to home page
+	</a>
+	<article class="p-4 my-5 shadow card">
+		<h1 class="mb-5 fw-bold">
+			Create your account
+		</h1>
+		<form method="post">
+			<div class="mb-1 text-danger">
+				<small>
+					@Html.ValidationSummary()
+				</small>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Input.Name" class="form-label">Name</label>
+				<input asp-for="Input.Name" type="text" class="form-control" required>
+				<small class="text-danger">@Html.ValidationMessageFor(m => m.Input.Name)</small>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Input.Email" class="form-label">Email address</label>
+				<input asp-for="Input.Email" type="email" class="form-control" required>
+				<small class="text-danger">@Html.ValidationMessageFor(m => m.Input.Email)</small>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Input.Password" class="form-label">Password</label>
+				<input asp-for="Input.Password" type="password" autocomplete="current-password" class="form-control" required>
+				<small class="text-danger">@Html.ValidationMessageFor(m => m.Input.Password)</small>
+			</div>
+			<div class="mb-3">
+				<label asp-for="Input.ConfirmPassword" class="form-label">Confirm password</label>
+				<input asp-for="Input.ConfirmPassword" type="password" autocomplete="current-password" class="form-control" required>
+				<small class="text-danger">@Html.ValidationMessageFor(m => m.Input.ConfirmPassword)</small>
+			</div>
+			<button type="submit" class="btn btn-primary">Create account</button>
+		</form>
+		<div class="mt-5">
+			<a href="/login" class="text-secondary">
+				Already registered? Sign in
+			</a>
+		</div>
+	</article>
+</section>
